@@ -1,5 +1,6 @@
 import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/pages/card_page.dart';
+import 'package:demande_chifa/pages/demande_carte_page.dart';
 import 'package:demande_chifa/pages/home_page.dart';
 import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,15 @@ class TheDrawer extends StatelessWidget {
               title: const Text("Carte"),
               onTap: () {
                 Get.to(() => const CardPage());
+              },
+            ),
+          ),
+          DropdownMenuItem(
+            child: ListTile(
+              leading: const Icon(Icons.add_card_rounded),
+              title: const Text("Demande Carte"),
+              onTap: () {
+                Get.to(() => const DemandeCartePage());
               },
             ),
           ),

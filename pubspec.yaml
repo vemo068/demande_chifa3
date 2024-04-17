@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get:
   nfc_manager: ^3.4.0
+  u_credit_card: 
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/controllers/home_controller.dart';
 import 'package:demande_chifa/pages/home_page.dart';
-import 'package:demande_chifa/pages/login_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

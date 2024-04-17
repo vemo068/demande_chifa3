@@ -5,6 +5,7 @@ import 'package:demande_chifa/components/chifa_card.dart';
 import 'package:demande_chifa/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:u_credit_card/u_credit_card.dart';
 
 class CardPage extends StatelessWidget {
   const CardPage({super.key});
@@ -16,11 +17,17 @@ class CardPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Credit Card'),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ChifaCard(),
+            // ChifaCard(),
+            const CreditCardUi(
+              cardHolderFullName: 'John Doe',
+              cardNumber: '1234567812378',
+              validThru: '10/24',
+              cardType: CardType.other,
+            ),
             MyButton(onTap: _startNFCWriting, text: "Share Data")
           ],
         ),
