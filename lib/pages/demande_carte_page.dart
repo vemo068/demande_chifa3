@@ -1,6 +1,8 @@
 import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/drawer.dart';
+import 'package:demande_chifa/pages/scan_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
 class DemandeCartePage extends StatelessWidget {
@@ -27,7 +29,11 @@ class DemandeCartePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: MyButton(
-                  onTap: null, text: "Demande", color: Colors.blue[900]!),
+                  onTap: () {
+                    Get.to(() => const ScanPage());
+                  },
+                  text: "Demande",
+                  color: Colors.blue[900]!),
             )
           ],
         ),
