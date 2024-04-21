@@ -1,12 +1,15 @@
 import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/drawer.dart';
+import 'package:demande_chifa/components/files_sheet.dart';
+import 'package:demande_chifa/controllers/demande_controller.dart';
 import 'package:demande_chifa/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
 class DemandeCartePage extends StatelessWidget {
-  const DemandeCartePage({super.key});
+  final DemandeController demandeController = Get.put(DemandeController());
+  DemandeCartePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,9 @@ class DemandeCartePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: MyButton(
                   onTap: () {
-                    Get.to(() => const ScanPage());
+                    Get.bottomSheet(
+                      FilesSheet(),
+                    );
                   },
                   text: "Demande",
                   color: Colors.blue[900]!),

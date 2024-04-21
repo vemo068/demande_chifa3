@@ -39,7 +39,8 @@ dependencies:
   nfc_manager: ^3.4.0
   u_credit_card:
   flutter_document_scanner:
-  camera: 
+  camera:
+  file_picker: 
  
  
 
