@@ -40,7 +40,8 @@ dependencies:
   u_credit_card:
   flutter_document_scanner:
   camera:
-  file_picker: 
+  file_picker:
+  path_provider: ^2.1.3 
  
  
 
