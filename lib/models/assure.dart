@@ -1,44 +1,55 @@
 class Assure {
-  String? id_user;
-  String num_Assure;
+  String? idUser;
+  bool isActivated;
+  String numAssure;
   String nom;
   String prenom;
-  String date_nai;
+  String dateNaissance;
   String password;
+  String img;
+  String dateFinDroit;
+  int taux;
 
   Assure({
-    this.id_user,
-    required this.num_Assure,
+    this.idUser,
+    required this.isActivated,
+    required this.numAssure,
     required this.nom,
     required this.prenom,
-    required this.date_nai,
+    required this.dateNaissance,
     required this.password,
+    required this.img,
+    required this.dateFinDroit,
+    required this.taux,
   });
 
   factory Assure.fromJson(Map<String, dynamic> json) {
     return Assure(
-      id_user: json['id_user'],
-      num_Assure: json['num_Assure'],
-      nom: json['nom'],
-      prenom: json['prenom'],
-      date_nai: json['date_nai'],
-      password: json['password'],
+      idUser: json['id_user'],
+      isActivated: json['isActivated'] ?? false,
+      numAssure: json['num_Assure'] ?? '',
+      nom: json['nom'] ?? '',
+      prenom: json['prenom'] ?? '',
+      dateNaissance: json['date_nai'] ?? '',
+      password: json['password'] ?? '',
+      img: json['img'] ?? '',
+      dateFinDroit: json['date_fin_droit'] ?? '',
+      taux: json['taux'] ?? 0,
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'num_Assure': num_Assure,
+    return {
+      'id_user': idUser,
+      'isActivated': isActivated,
+      'num_Assure': numAssure,
       'nom': nom,
       'prenom': prenom,
-      'date_nai': date_nai,
+      'date_nai': dateNaissance,
       'password': password,
+      'img': img,
+      'date_fin_droit': dateFinDroit,
+      'taux': taux,
     };
-    if (id_user != null) {
-      data['id_user'] = id_user;
-    }
-    return data;
   }
-
-  // Other necessary functions can be added here as per requirement
 }
