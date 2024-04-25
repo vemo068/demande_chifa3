@@ -68,7 +68,7 @@ class WelcomePage extends StatelessWidget {
                     const SizedBox(height: 40.0),
                     MyButton(
                       onTap: () {
-                        Get.to(() => EnterPasswordPage());
+                        authController.checkAccountIsActivated();
                       },
                       text: "Continue",
                       color: kTextColor2,
