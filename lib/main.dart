@@ -1,6 +1,7 @@
 import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/controllers/home_controller.dart';
 import 'package:demande_chifa/pages/home_page.dart';
+import 'package:demande_chifa/pages/welcome_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,8 +21,7 @@ class TheApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Demande Chifa',
-      
-      home: HomePage(),
+      home: WelcomePage(),
     );
   }
 }
