@@ -1,10 +1,14 @@
 import 'package:demande_chifa/components/drawer.dart';
+import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/controllers/home_controller.dart';
+import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class HomePage extends StatelessWidget {
   final HomeController homeController = Get.find<HomeController>();
+  final AuthController authController = Get.find<AuthController>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   HomePage({super.key});
 
@@ -13,7 +17,7 @@ class HomePage extends StatelessWidget {
     return GetBuilder(
         init: homeController,
         builder: (_) {
-         // homeController.getScreenDimension(contxt);
+          // homeController.getScreenDimension(contxt);
           return SafeArea(
             child: Scaffold(
               drawer: TheDrawer(),
@@ -24,7 +28,7 @@ class HomePage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: const BoxDecoration(
-                      color: Colors.blue,
+                      color: kTextColor2,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30),
@@ -42,21 +46,25 @@ class HomePage extends StatelessWidget {
                             _scaffoldKey.currentState!.openDrawer();
                           },
                         ),
-                        const Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Bienvenue",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              "HASSOUNA AYMANE",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
+                        GetBuilder(
+                            init: authController,
+                            builder: (_) {
+                              return Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Text(
+                                    "Bienvenue",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  Text(
+                                    "${authController.currenAssure!.nom} ${authController.currenAssure!.prenom}",
+                                    style: const TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              );
+                            }),
                         IconButton(
                           icon: const Icon(
                             Icons.notifications,

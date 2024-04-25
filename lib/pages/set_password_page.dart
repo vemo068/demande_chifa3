@@ -66,7 +66,9 @@ class SetPasswordPage extends StatelessWidget {
                         const SizedBox(height: 25),
                         MyButton(
                           text: "Inscrire",
-                          onTap: authController.signUp,
+                          onTap: () {
+                            authController.accountActivation();
+                          },
                           color: kTextColor2,
                         ),
                       ],

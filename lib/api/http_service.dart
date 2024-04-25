@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'package:demande_chifa/api/links.dart';
+import 'package:demande_chifa/models/assure.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {
- 
-
-
-  static Future<bool> activateAccount(String numAssure, String password) async {
+  static Future<Assure?> activateAccount(
+      String numAssure, String password) async {
     final response = await http.post(
       Uri.parse('$accountActivationUrl'),
       body: {
@@ -15,13 +14,14 @@ class HttpService {
       },
     );
     if (response.statusCode == 200) {
-      return true;
+      var body = await json.decode(response.body);
+      return Assure.fromJson(body);
     } else {
-      throw Exception('Failed to activate account');
+      return null;
     }
   }
 
-  static Future<bool> login(String numAssure, String password) async {
+  static Future<Assure?> login(String numAssure, String password) async {
     final response = await http.post(
       Uri.parse('$loginUrl'),
       body: {
@@ -30,9 +30,13 @@ class HttpService {
       },
     );
     if (response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
+      String body = response.body;
+      if (body == "") {
+        return null;
+      } else {
+        var bdy = await json.decode(response.body);
+        return Assure.fromJson(bdy);
+      }
     }
   }
 
@@ -44,13 +48,13 @@ class HttpService {
       },
     );
     if (response.statusCode == 200) {
-      // If the response body is 'true', return true; otherwise, return false
-      return response.body.trim().toLowerCase() == 'true';
-    } else if (response.statusCode == 404) {
-      // If the response status code is 404, return null (no record found)
-      return null;
-    } else {
-      throw Exception('Failed to check activation');
+      String body = response.body;
+      if (body == "") {
+        return null;
+      } else {
+        bool result = jsonDecode(body);
+        return result;
+      }
     }
   }
 }

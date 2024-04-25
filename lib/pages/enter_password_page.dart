@@ -4,6 +4,7 @@ import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/text_field.dart';
 import 'package:demande_chifa/components/text_field1.dart';
 import 'package:demande_chifa/controllers/auth_controller.dart';
+import 'package:demande_chifa/pages/home_page.dart';
 import 'package:demande_chifa/pages/set_password_page.dart';
 import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +68,8 @@ class EnterPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 40.0),
                     MyButton(
-                      onTap: () {
-                        Get.to(() => SetPasswordPage());
+                      onTap: () async {
+                        authController.login();
                       },
                       text: "Continue",
                       color: kTextColor2,
