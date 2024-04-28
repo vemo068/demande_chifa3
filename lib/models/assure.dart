@@ -7,10 +7,10 @@ class Assure {
   String numAssure;
   String nom;
   String prenom;
-  String dateNaissance;
+  DateTime dateNaissance;
   String password;
   Uint8List image;
-  String dateFinDroit;
+  DateTime dateFinDroit;
   int taux;
 
   Assure({
@@ -33,10 +33,10 @@ class Assure {
       numAssure: json['numAssure'] ?? '',
       nom: json['nom'] ?? '',
       prenom: json['prenom'] ?? '',
-      dateNaissance: json['dateNaissance'] ?? '',
+      dateNaissance: DateTime.parse(json['dateNaissance']),
       password: json['password'] ?? '',
       image: Uint8List.fromList(base64Decode(json['image'])),
-      dateFinDroit: json['dateFinDroit'] ?? '',
+      dateFinDroit: DateTime.parse(json['dateFinDroit']),
       taux: json['taux'] ?? 0,
     );
   }
@@ -48,10 +48,10 @@ class Assure {
       'numAssure': numAssure,
       'nom': nom,
       'prenom': prenom,
-      'dateNaissance': dateNaissance,
+      'dateNaissance': dateNaissance.toIso8601String(),
       'password': password,
-      'image': image,
-      'dateFinDroit': dateFinDroit,
+      'image': base64Encode(image),
+      'dateFinDroit': dateFinDroit.toIso8601String(),
       'taux': taux,
     };
   }
