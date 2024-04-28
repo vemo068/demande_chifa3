@@ -2,6 +2,7 @@ import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/pages/card_page.dart';
 import 'package:demande_chifa/pages/demande_carte_page.dart';
 import 'package:demande_chifa/pages/home_page.dart';
+import 'package:demande_chifa/pages/profile_page.dart';
 import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,12 +51,7 @@ class TheDrawer extends StatelessWidget {
               leading: const Icon(Icons.person),
               title: const Text("Profile"),
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => ProfilePage(),
-                //   ),
-                // );
+                Get.offAll(() => ProfilePage());
               },
             ),
           ),
@@ -73,7 +69,7 @@ class TheDrawer extends StatelessWidget {
               leading: const Icon(Icons.add_card_rounded),
               title: const Text("Demande Carte"),
               onTap: () {
-                Get.to(() =>  DemandeCartePage());
+                Get.to(() => DemandeCartePage());
               },
             ),
           ),
@@ -85,7 +81,9 @@ class TheDrawer extends StatelessWidget {
                     leading: const Icon(Icons.logout),
                     title: const Text("Logout"),
                     onTap: () {
+                      
                       authController.logout();
+                    
                     },
                   ),
                 );

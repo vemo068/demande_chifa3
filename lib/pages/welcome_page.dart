@@ -4,6 +4,7 @@ import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/text_field.dart';
 import 'package:demande_chifa/components/text_field1.dart';
 import 'package:demande_chifa/controllers/auth_controller.dart';
+import 'package:demande_chifa/controllers/demande_controller.dart';
 import 'package:demande_chifa/pages/enter_password_page.dart';
 import 'package:demande_chifa/pages/set_password_page.dart';
 import 'package:demande_chifa/style/colors.dart';
@@ -12,6 +13,7 @@ import 'package:get/get.dart';
 
 class WelcomePage extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
+  final DemandeController demandeController = Get.put(DemandeController());
   WelcomePage({super.key});
 
   @override

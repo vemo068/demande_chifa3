@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
 class DemandeCartePage extends StatelessWidget {
-  final DemandeController demandeController = Get.put(DemandeController());
+  
   DemandeCartePage({super.key});
 
   @override

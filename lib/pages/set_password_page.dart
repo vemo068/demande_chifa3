@@ -2,7 +2,9 @@ import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/text_field.dart';
 import 'package:demande_chifa/components/text_field1.dart';
 import 'package:demande_chifa/controllers/auth_controller.dart';
+import 'package:demande_chifa/controllers/demande_controller.dart';
 import 'package:demande_chifa/pages/welcome_page.dart';
+import 'package:demande_chifa/style/buttons_style.dart';
 import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,6 +64,21 @@ class SetPasswordPage extends StatelessWidget {
                               authController.confirm_password_controller,
                           labelText: 'Confirm Mot de pass',
                           hintText: 'Confirmer votre Mot de pass',
+                        ),
+                        const SizedBox(height: 10),
+                        OutlinedButton(
+                          style: kOutlinedButtonStyle,
+                          onPressed: () async {
+                            await authController.pickImage();
+                          },
+                          child: const Text("Photo"),
+                        ),
+                        SizedBox(
+                          height: 80,
+                          width: 80,
+                          child: authController.imageBytes != null
+                              ? Image.memory(authController.imageBytes!)
+                              : const Text('No image selected'),
                         ),
                         const SizedBox(height: 25),
                         MyButton(

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 class Assure {
   String? idUser;
   bool isActivated;
@@ -6,7 +9,7 @@ class Assure {
   String prenom;
   String dateNaissance;
   String password;
-  String img;
+  Uint8List image;
   String dateFinDroit;
   int taux;
 
@@ -18,7 +21,7 @@ class Assure {
     required this.prenom,
     required this.dateNaissance,
     required this.password,
-    required this.img,
+    required this.image,
     required this.dateFinDroit,
     required this.taux,
   });
@@ -27,13 +30,13 @@ class Assure {
     return Assure(
       idUser: json['id_user'],
       isActivated: json['isActivated'] ?? false,
-      numAssure: json['num_Assure'] ?? '',
+      numAssure: json['numAssure'] ?? '',
       nom: json['nom'] ?? '',
       prenom: json['prenom'] ?? '',
-      dateNaissance: json['date_nai'] ?? '',
+      dateNaissance: json['dateNaissance'] ?? '',
       password: json['password'] ?? '',
-      img: json['img'] ?? '',
-      dateFinDroit: json['date_fin_droit'] ?? '',
+      image: Uint8List.fromList(base64Decode(json['image'])),
+      dateFinDroit: json['dateFinDroit'] ?? '',
       taux: json['taux'] ?? 0,
     );
   }
@@ -42,13 +45,13 @@ class Assure {
     return {
       'id_user': idUser,
       'isActivated': isActivated,
-      'num_Assure': numAssure,
+      'numAssure': numAssure,
       'nom': nom,
       'prenom': prenom,
-      'date_nai': dateNaissance,
+      'dateNaissance': dateNaissance,
       'password': password,
-      'img': img,
-      'date_fin_droit': dateFinDroit,
+      'image': image,
+      'dateFinDroit': dateFinDroit,
       'taux': taux,
     };
   }
