@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:demande_chifa/api/http_service.dart';
+import 'package:demande_chifa/api/http_assure_service.dart';
 import 'package:demande_chifa/controllers/home_controller.dart';
 import 'package:demande_chifa/models/assure.dart';
 import 'package:demande_chifa/pages/enter_password_page.dart';
@@ -14,13 +14,13 @@ import 'package:flutter/material.dart';
 
 class AuthController extends GetxController {
   Assure? currenAssure;
-  HttpService httpService = HttpService();
+  HttpAssureService httpService = HttpAssureService();
   // sign up
   TextEditingController n_Assure_controller = TextEditingController();
   TextEditingController password_signup_controller = TextEditingController();
   TextEditingController confirm_password_controller = TextEditingController();
 
-  Uint8List? imageBytes;
+  Uint8List? profileImageBytes;
 
   void signUp() {
     Get.to(HomePage());
@@ -31,7 +31,7 @@ class AuthController extends GetxController {
   TextEditingController password_login_controller = TextEditingController();
   void checkAccountIsActivated() async {
     bool? isActive =
-        await HttpService.checkActivation(n_Assure_controller.text);
+        await HttpAssureService.checkActivation(n_Assure_controller.text);
     if (isActive == null) {
       Get.snackbar(
         "Login Faild",
@@ -48,8 +48,10 @@ class AuthController extends GetxController {
 
   void accountActivation() async {
     if (password_signup_controller.text == confirm_password_controller.text) {
-      currenAssure = await HttpService.activateAccount(n_Assure_controller.text,
-          password_signup_controller.text, imageBytes!);
+      currenAssure = await HttpAssureService.activateAccount(
+          n_Assure_controller.text,
+          password_signup_controller.text,
+          profileImageBytes!);
       print(currenAssure);
       // login
       if (currenAssure != null) {
@@ -77,7 +79,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> login() async {
-    currenAssure = await HttpService.login(
+    currenAssure = await HttpAssureService.login(
         n_Assure_controller.text, password_login_controller.text);
     if (currenAssure != null) {
       Get.offAll(() => HomePage());
@@ -115,7 +117,7 @@ class AuthController extends GetxController {
         // Read the file as bytes
         File imageFile = File(path);
         List<int> bytes = await imageFile.readAsBytes();
-        imageBytes = Uint8List.fromList(bytes);
+        profileImageBytes = Uint8List.fromList(bytes);
         print("::::::: $bytes");
         update();
       }

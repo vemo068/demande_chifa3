@@ -3,8 +3,10 @@ import 'dart:typed_data';
 import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/chifa_card.dart';
 import 'package:demande_chifa/components/drawer.dart';
+import 'package:demande_chifa/services/hce_service.dart';
 import 'package:flutter/material.dart';
-import 'package:nfc_manager/nfc_manager.dart';
+import 'package:flutter/services.dart';
+
 import 'package:u_credit_card/u_credit_card.dart';
 
 class CardPage extends StatelessWidget {
@@ -28,7 +30,14 @@ class CardPage extends StatelessWidget {
               validThru: '10/24',
               cardType: CardType.other,
             ),
-            MyButton(onTap: _startNFCWriting, text: "Share Data")
+            MyButton(
+                onTap: () {
+                  _sendDataViaNFC({
+                    "name": "aymen",
+                    "age": 15,
+                  });
+                },
+                text: "Share Data")
           ],
         ),
       ),
@@ -36,36 +45,46 @@ class CardPage extends StatelessWidget {
   }
 }
 
-void _startNFCWriting() async {
-  try {
-//check if NFC is available on the device or not.
-    bool isAvailable = await NfcManager.instance.isAvailable();
-
-// If NFC is available, start a session to listen for NFC tags.
-    if (isAvailable) {
-      NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
-        try {
-// When an NFC tag is discovered, we check if it supports NDEF technology.
-          NdefMessage message =
-              NdefMessage([NdefRecord.createText('Hello, NFC!')]);
-          await Ndef.from(tag)?.write(
-              message); //If it supports NDEF, create an NDEF message and write it to the tag.
-          debugPrint('Data emitted successfully');
-          Uint8List payload = message.records.first.payload;
-          String text = String.fromCharCodes(payload);
-          print('ddddd');
-          debugPrint("Written data: $text");
-
-//stop the NFC Session
-          NfcManager.instance.stopSession();
-        } catch (e) {
-          debugPrint('Error emitting NFC data: $e');
-        }
-      });
-    } else {
-      debugPrint('NFC not available.');
+ Future<void> _sendDataViaNFC(Map<String, dynamic> data) async {
+    const platform = MethodChannel("com.example.demande_chifa3");
+    try {
+      await platform.invokeMethod('sendData', data);
+    } on PlatformException catch (e) {
+      print("Failed to send data via NFC: '${e.message}'.");
     }
-  } catch (e) {
-    debugPrint('Error writing to NFC: $e');
   }
-}
+
+
+// void _startNFCWriting() async {
+//   try {
+// //check if NFC is available on the device or not.
+//     bool isAvailable = await NfcManager.instance.isAvailable();
+
+// // If NFC is available, start a session to listen for NFC tags.
+//     if (isAvailable) {
+//       NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
+//         try {
+// // When an NFC tag is discovered, we check if it supports NDEF technology.
+//           NdefMessage message =
+//               NdefMessage([NdefRecord.createText('Hello, NFC!')]);
+//           await Ndef.from(tag)?.write(
+//               message); //If it supports NDEF, create an NDEF message and write it to the tag.
+//           debugPrint('Data emitted successfully');
+//           Uint8List payload = message.records.first.payload;
+//           String text = String.fromCharCodes(payload);
+//           print('ddddd');
+//           debugPrint("Written data: $text");
+
+// //stop the NFC Session
+//           NfcManager.instance.stopSession();
+//         } catch (e) {
+//           debugPrint('Error emitting NFC data: $e');
+//         }
+//       });
+//     } else {
+//       debugPrint('NFC not available.');
+//     }
+//   } catch (e) {
+//     debugPrint('Error writing to NFC: $e');
+//   }
+// }

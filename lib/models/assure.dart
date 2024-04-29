@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 class Assure {
-  String? idUser;
+  int? idUser;
   bool isActivated;
   String numAssure;
   String nom;
@@ -28,8 +28,8 @@ class Assure {
 
   factory Assure.fromJson(Map<String, dynamic> json) {
     return Assure(
-      idUser: json['id_user'],
-      isActivated: json['isActivated'] ?? false,
+      idUser: json['idUser'],
+      isActivated: json['activated'] ?? false,
       numAssure: json['numAssure'] ?? '',
       nom: json['nom'] ?? '',
       prenom: json['prenom'] ?? '',
@@ -43,8 +43,8 @@ class Assure {
 
   Map<String, dynamic> toJson() {
     return {
-      'id_user': idUser,
-      'isActivated': isActivated,
+      'idUser': idUser,
+      'activated': isActivated,
       'numAssure': numAssure,
       'nom': nom,
       'prenom': prenom,

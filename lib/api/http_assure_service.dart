@@ -4,20 +4,11 @@ import 'package:demande_chifa/api/links.dart';
 import 'package:demande_chifa/models/assure.dart';
 import 'package:http/http.dart' as http;
 
-class HttpService {
+class HttpAssureService {
   static Future<Assure?> activateAccount(
       String numAssure, String password, Uint8List image) async {
-    Map<String, dynamic> reqBody = {
-      'numAssure': numAssure,
-      'password': password,
-      'image': base64Encode(image),
-    };
-    print(jsonEncode(reqBody));
     final response = await http.post(
       Uri.parse(accountActivationUrl),
-      // headers: <String, String>{
-      //   'Content-Type': 'application/json; charset=UTF-8',
-      // },
       body: {
         'numAssure': numAssure,
         'password': password,

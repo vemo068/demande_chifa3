@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:demande_chifa/models/assure.dart';
 
 class DemandeDeRenouvellement {
-  String? id;
+  int? id;
   Uint8List attestationImg;
   Uint8List idImg;
   Assure assure;
@@ -22,22 +22,22 @@ class DemandeDeRenouvellement {
   factory DemandeDeRenouvellement.fromJson(Map<String, dynamic> json) {
     return DemandeDeRenouvellement(
       id: json['id'],
-      attestationImg: Uint8List.fromList(base64Decode(json['attestation_img'])),
-      idImg: Uint8List.fromList(base64Decode(json['id_img'])),
+      attestationImg: Uint8List.fromList(base64Decode(json['attestationImg'])),
+      idImg: Uint8List.fromList(base64Decode(json['idImg'])),
       assure: Assure.fromJson(json['assure']),
       status: json['status'],
-      reasonDeRefuse: json['reason_de_refuse'],
+      reasonDeRefuse: json['reasonDeRefuse'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'attestation_img': base64Encode(attestationImg),
-      'id_img': base64Encode(idImg),
+      'attestationImg': base64Encode(attestationImg),
+      'idImg': base64Encode(idImg),
       'assure': assure.toJson(),
       'status': status,
-      'reason_de_refuse': reasonDeRefuse,
+      'reasonDeRefuse': reasonDeRefuse,
     };
   }
 }

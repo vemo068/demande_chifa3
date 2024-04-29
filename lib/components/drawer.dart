@@ -42,7 +42,7 @@ class TheDrawer extends StatelessWidget {
               leading: const Icon(Icons.home),
               title: const Text("Accueil"),
               onTap: () {
-                Get.to(() => HomePage());
+                Get.offAll(() => HomePage());
               },
             ),
           ),
@@ -60,16 +60,16 @@ class TheDrawer extends StatelessWidget {
               leading: const Icon(Icons.credit_card),
               title: const Text("Carte"),
               onTap: () {
-                Get.to(() => const CardPage());
+                Get.offAll(() => const CardPage());
               },
             ),
           ),
           DropdownMenuItem(
             child: ListTile(
               leading: const Icon(Icons.add_card_rounded),
-              title: const Text("Demande Carte"),
+              title: const Text("Demande Renouvellement"),
               onTap: () {
-                Get.to(() => DemandeCartePage());
+                Get.offAll(() => DemandeCartePage());
               },
             ),
           ),
@@ -81,9 +81,7 @@ class TheDrawer extends StatelessWidget {
                     leading: const Icon(Icons.logout),
                     title: const Text("Logout"),
                     onTap: () {
-                      
                       authController.logout();
-                    
                     },
                   ),
                 );

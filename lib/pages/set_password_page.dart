@@ -76,8 +76,8 @@ class SetPasswordPage extends StatelessWidget {
                         SizedBox(
                           height: 80,
                           width: 80,
-                          child: authController.imageBytes != null
-                              ? Image.memory(authController.imageBytes!)
+                          child: authController.profileImageBytes != null
+                              ? Image.memory(authController.profileImageBytes!)
                               : const Text('No image selected'),
                         ),
                         const SizedBox(height: 25),
