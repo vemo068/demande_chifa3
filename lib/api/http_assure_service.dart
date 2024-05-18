@@ -6,13 +6,13 @@ import 'package:http/http.dart' as http;
 
 class HttpAssureService {
   static Future<Assure?> activateAccount(
-      String numAssure, String password, Uint8List image) async {
+      String numAssure, String password) async {
     final response = await http.post(
       Uri.parse(accountActivationUrl),
       body: {
         'numAssure': numAssure,
         'password': password,
-        'image': base64Encode(image),
+        
       },
     );
     if (response.statusCode == 200) {

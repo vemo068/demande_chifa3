@@ -1,6 +1,7 @@
 import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/pages/card_page.dart';
 import 'package:demande_chifa/pages/demande_carte_page.dart';
+import 'package:demande_chifa/pages/demande_renouvellement_page.dart';
 import 'package:demande_chifa/pages/home_page.dart';
 import 'package:demande_chifa/pages/profile_page.dart';
 import 'package:demande_chifa/style/colors.dart';
@@ -60,16 +61,25 @@ class TheDrawer extends StatelessWidget {
               leading: const Icon(Icons.credit_card),
               title: const Text("Carte"),
               onTap: () {
-                Get.offAll(() => const CardPage());
+                Get.offAll(() => CardPage());
               },
             ),
           ),
           DropdownMenuItem(
             child: ListTile(
               leading: const Icon(Icons.add_card_rounded),
-              title: const Text("Demande Renouvellement"),
+              title: const Text("Demande Carte"),
               onTap: () {
                 Get.offAll(() => DemandeCartePage());
+              },
+            ),
+          ),
+          DropdownMenuItem(
+            child: ListTile(
+              leading: const Icon(Icons.update),
+              title: const Text("Demande Renouvellement"),
+              onTap: () {
+                Get.offAll(() => DemandeRenouvellementPage());
               },
             ),
           ),

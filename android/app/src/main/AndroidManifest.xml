@@ -7,6 +7,19 @@
         android:label="demande_chifa"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+         <service
+              android:name=".HceService"
+              android:exported="true"
+              android:permission="android.permission.BIND_NFC_SERVICE">
+              <intent-filter>
+                  <action android:name="android.nfc.cardemulation.HostApduService"/>
+              </intent-filter>
+              <meta-data
+                  android:name="android.nfc.cardemulation.host_apdu_service"
+                  android:resource="@xml/apduservice"/>
+          </service>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

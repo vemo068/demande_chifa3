@@ -1,11 +1,7 @@
 package com.example.demande_chifa3
-
-import android.nfc.NdefRecord
-
-
-import com.google.gson.Gson
 import android.content.Intent
 import android.nfc.NdefMessage
+import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
 import android.os.Bundle
 import androidx.annotation.NonNull
@@ -22,31 +18,34 @@ class MainActivity : FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
             if (call.method == "sendData") {
-                val data = call.arguments as Map<String, String>
-                sendNFCData(data)
+                sendNFCData()
             } else {
                 result.notImplemented()
             }
         }
     }
 
-    private fun sendNFCData(data: Map<String, String>) {
-        val message = convertMapToJson(data)
-        val msg = NdefMessage(
+    private fun sendNFCData() {
+        val text = "Hello, World!"
+        val message = NdefMessage(
             arrayOf(
-                NdefRecord.createMime(
-                    "text/plain",
-                    message.toByteArray(Charset.forName("UTF-8"))
-                )
-            )
+                NdefRecord.createTextRecord(
+                    "en",
+                    "Hello, World!"
+                ),
+                NdefRecord.createTextRecord(
+                    "en",
+                    "Hello, dddd!"
+                ),NdefRecord.createTextRecord(
+                    "en",
+                    "Hello, Wsqdsqqdrld!"
+                ),
+            ),
+
         )
         val intent = Intent(NfcAdapter.ACTION_NDEF_DISCOVERED)
-        intent.putExtra(NfcAdapter.EXTRA_NDEF_MESSAGES, arrayOf(msg))
+        intent.putExtra(NfcAdapter.EXTRA_NDEF_MESSAGES, "arrayOf(message)")
+        intent.putExtra("age",15);
         startActivity(intent)
-    }
-
-    private fun convertMapToJson(data: Map<String, String>): String {
-        val gson = Gson()
-        return gson.toJson(data)
     }
 }

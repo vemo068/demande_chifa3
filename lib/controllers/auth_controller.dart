@@ -32,48 +32,46 @@ class AuthController extends GetxController {
   void checkAccountIsActivated() async {
     bool? isActive =
         await HttpAssureService.checkActivation(n_Assure_controller.text);
-    if (isActive == null) {
+    if (isActive != null) {
+      if (isActive) {
+        Get.to(EnterPasswordPage());
+      } else {
+        Get.to(SetPasswordPage());
+      }
+    } else {
       Get.snackbar(
         "Login Faild",
         "please check Numero d'Assurance",
-        borderColor: Colors.red,
-        colorText: Colors.black,
+        // borderColor: Colors.red,
+        // colorText: Colors.black,
       );
-    } else if (isActive) {
-      Get.to(() => EnterPasswordPage());
-    } else {
-      Get.to(() => SetPasswordPage());
     }
   }
 
   void accountActivation() async {
     if (password_signup_controller.text == confirm_password_controller.text) {
       currenAssure = await HttpAssureService.activateAccount(
-          n_Assure_controller.text,
-          password_signup_controller.text,
-          profileImageBytes!);
+        n_Assure_controller.text,
+        password_signup_controller.text,
+      );
       print(currenAssure);
       // login
       if (currenAssure != null) {
         Get.snackbar(
           "Compte creeé",
           "d",
-          colorText: Colors.black,
         );
         Get.offAll(() => HomePage());
       } else {
         Get.snackbar(
           "Login Faild",
           "please check internet",
-          colorText: Colors.black,
         );
       }
     } else {
       Get.snackbar(
         "Login Faild",
-        "please check Mot de pass",
-        borderColor: Colors.red,
-        colorText: Colors.black,
+        "please confirm Mot de pass",
       );
     }
   }
@@ -87,8 +85,6 @@ class AuthController extends GetxController {
       Get.snackbar(
         "Login Faild",
         "please check your password ",
-        borderColor: Colors.red,
-        colorText: Colors.black,
       );
     }
   }

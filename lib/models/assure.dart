@@ -4,17 +4,19 @@ import 'dart:typed_data';
 class Assure {
   int? idUser;
   bool isActivated;
+  bool cardActivated;
   String numAssure;
   String nom;
   String prenom;
   DateTime dateNaissance;
   String password;
-  Uint8List image;
+  Uint8List? image;
   DateTime dateFinDroit;
   int taux;
 
   Assure({
     this.idUser,
+    required this.cardActivated,
     required this.isActivated,
     required this.numAssure,
     required this.nom,
@@ -30,12 +32,15 @@ class Assure {
     return Assure(
       idUser: json['idUser'],
       isActivated: json['activated'] ?? false,
+      cardActivated: json['cardActivated'],
       numAssure: json['numAssure'] ?? '',
       nom: json['nom'] ?? '',
       prenom: json['prenom'] ?? '',
       dateNaissance: DateTime.parse(json['dateNaissance']),
       password: json['password'] ?? '',
-      image: Uint8List.fromList(base64Decode(json['image'])),
+      image: json['image'] != null
+          ? Uint8List.fromList(base64Decode(json['image']))
+          : null,
       dateFinDroit: DateTime.parse(json['dateFinDroit']),
       taux: json['taux'] ?? 0,
     );
@@ -45,12 +50,13 @@ class Assure {
     return {
       'idUser': idUser,
       'activated': isActivated,
+      'cardActivated': cardActivated,
       'numAssure': numAssure,
       'nom': nom,
       'prenom': prenom,
       'dateNaissance': dateNaissance.toIso8601String(),
       'password': password,
-      'image': base64Encode(image),
+      'image': base64Encode(image!),
       'dateFinDroit': dateFinDroit.toIso8601String(),
       'taux': taux,
     };

@@ -31,11 +31,13 @@ class ProfilePage extends StatelessWidget {
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage:
-                                MemoryImage(authController.currenAssure!.image),
-                          ),
+                          authController.currenAssure!.image == null
+                              ? const Text("no image")
+                              : CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: MemoryImage(
+                                      authController.currenAssure!.image!),
+                                ),
                           const SizedBox(height: 20),
                           Text(
                             'Numéro d\'assurance: ${authController.currenAssure!.numAssure}',

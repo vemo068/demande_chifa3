@@ -7,7 +7,7 @@ import 'package:demande_chifa/models/demande_renouvle.dart';
 
 class HttpDemandeService {
   Future<List<DemandeDeRenouvellement>> getAllDemandesDeRenouvellement() async {
-    final response = await http.get(Uri.parse(getDemandesUrl));
+    final response = await http.get(Uri.parse(getRenoDemandesUrl));
 
     if (response.statusCode == 200) {
       Iterable data = jsonDecode(response.body);
@@ -27,14 +27,14 @@ class HttpDemandeService {
       required String status}) async {
 //{required Uint8List attestationImg,required idImg,required Assure assure, required String status}
     final response = await http.post(
-      Uri.parse(createDemandeUrl),
+      Uri.parse(createRenoDemandeUrl),
       //  body: demandeDeRenouvellement.toJson(),
 
       body: {
+        'status': status,
         'attestationImg': base64Encode(attestationImg),
         'idImg': base64Encode(idImg),
         'assureid': assureid.toString(),
-        'status': status,
       },
     );
 
