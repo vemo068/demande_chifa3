@@ -1,71 +1,130 @@
-
+import 'package:demande_chifa/controllers/auth_controller.dart';
+import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:u_credit_card/u_credit_card.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class ChifaCard extends StatelessWidget {
-  const ChifaCard({
-    super.key,
-  });
+  final AuthController authController = Get.find<AuthController>();
+  ChifaCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      height: 200,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: const Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Card Number',
-            style: TextStyle(fontSize: 20),
-          ),
-          SizedBox(height: 10),
-          Text(
-            '**** **** **** 1234',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Card Holder',
-                style: TextStyle(fontSize: 16),
+    return GetBuilder(
+        init: authController,
+        builder: (_) {
+          return Material(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            elevation: 2,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              height: 200,
+              width: 350,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 93, 235, 243),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12),
+                ),
+                image: DecorationImage(
+                    image: AssetImage("assets/Chifa_background.png"),
+                    fit: BoxFit.cover),
               ),
-              Text(
-                'Expiry Date',
-                style: TextStyle(fontSize: 16),
+              child: Column(
+                children: [
+                  const Center(
+                    child: Text(
+                      "E-CHIFA",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: kTextColor2,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 80,
+                        color: kTextColor2,
+                        child: Image.memory(
+                          authController.currenAssure!.image!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                authController.currenAssure!.prenom,
+                                style: const TextStyle(
+                                    fontSize: 14, color: kTextColor2),
+                              ),
+                              const Text(
+                                ":الاسم",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: kTextColor2),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                authController.currenAssure!.nom,
+                                style: const TextStyle(
+                                    fontSize: 14, color: kTextColor2),
+                              ),
+                              const Text(
+                                ":اللقب",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: kTextColor2),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                authController.currenAssure!.dateNaissance
+                                    .toString()
+                                    .substring(0, 10),
+                                style: const TextStyle(
+                                    fontSize: 14, color: kTextColor2),
+                              ),
+                              const Text(
+                                ":تاريخ الميلاد",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: kTextColor2),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ],
               ),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'John Doe',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                '12/24',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+            ),
+          );
+        });
   }
 }

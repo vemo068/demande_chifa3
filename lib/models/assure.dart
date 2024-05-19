@@ -61,4 +61,19 @@ class Assure {
       'taux': taux,
     };
   }
+
+  Map<String, dynamic> toJsonWithoutImage() {
+    return {
+      'idUser': idUser,
+      'activated': isActivated,
+      'cardActivated': cardActivated,
+      'numAssure': numAssure,
+      'nom': nom,
+      'prenom': prenom,
+      'dateNaissance': dateNaissance.toIso8601String(),
+      'password': password,
+      'dateFinDroit': dateFinDroit.toIso8601String(),
+      'taux': taux,
+    };
+  }
 }

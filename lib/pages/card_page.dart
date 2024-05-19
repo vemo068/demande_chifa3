@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:demande_chifa/components/button.dart';
@@ -10,6 +11,7 @@ import 'package:demande_chifa/services/hce_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import 'package:u_credit_card/u_credit_card.dart';
 
@@ -36,13 +38,27 @@ class CardPage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            // ChifaCard(),
-                            const CreditCardUi(
-                              cardHolderFullName: 'John Doe',
-                              cardNumber: '1234567812378',
-                              validThru: '10/24',
-                              cardType: CardType.other,
+                            ChifaCard(),
+
+                            SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: PrettyQrView.data(
+                                data: jsonEncode(authController.currenAssure!
+                                    .toJsonWithoutImage()),
+                                decoration: const PrettyQrDecoration(
+                                  image: PrettyQrDecorationImage(
+                                    image: AssetImage('images/flutter.png'),
+                                  ),
+                                ),
+                              ),
                             ),
+                            // const CreditCardUi(
+                            //   cardHolderFullName: 'John Doe',
+                            //   cardNumber: '1234567812378',
+                            //   validThru: '10/24',
+                            //   cardType: CardType.other,
+                            // ),
                             MyButton(
                                 onTap: () {
                                   // _emulateNFC();

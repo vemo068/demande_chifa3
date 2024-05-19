@@ -121,4 +121,10 @@ class AuthController extends GetxController {
       print('Error picking image: $e');
     }
   }
+
+
+
+  void generateQR(){
+    
+  }
 }
