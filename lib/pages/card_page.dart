@@ -24,7 +24,7 @@ class CardPage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text('Credit Card'),
+        title: const Text('Chifa Card'),
       ),
       body: GetBuilder(
           init: authController,
