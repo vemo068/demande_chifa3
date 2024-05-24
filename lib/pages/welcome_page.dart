@@ -9,6 +9,7 @@ import 'package:demande_chifa/controllers/demande_reno_controller.dart';
 import 'package:demande_chifa/pages/enter_password_page.dart';
 import 'package:demande_chifa/pages/set_password_page.dart';
 import 'package:demande_chifa/style/colors.dart';
+import 'package:demande_chifa/style/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,7 +50,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     const Text(
-                      'Bienvenue à notre application',
+                      text_bienvenue_welcome_page,
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -58,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10.0),
                     const Text(
-                      'Une application pour gérer votre CHIFA card virtuelle',
+                      text_gérer_chifa,
                       style: TextStyle(
                         fontSize: 16.0,
                         color: kTextColor2,
@@ -68,15 +69,15 @@ class WelcomePage extends StatelessWidget {
                     const SizedBox(height: 40.0),
                     TextField1(
                       textEditingController: authController.n_Assure_controller,
-                      labelText: 'Numéro de sécurité sociale',
-                      hintText: 'Entrez votre numéro de sécurité sociale',
+                      labelText: labelText_Numéro_de_sécurité_sociale_welcome_page,
+                      hintText: hintText_votre_numéro_de_sécurité_sociale_welcome_page,
                     ),
                     const SizedBox(height: 40.0),
                     MyButton(
                       onTap: () {
                         authController.checkAccountIsActivated();
                       },
-                      text: "Continue",
+                      text: text_btn_continue,
                       color: kTextColor2,
                     ),
                   ],

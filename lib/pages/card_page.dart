@@ -69,7 +69,7 @@ class CardPage extends StatelessWidget {
                                   //   "age": 15,
                                   // });
                                 },
-                                text: "Share Data")
+                                text: text_sharedata_card_page)
                           ],
                         ),
                       );

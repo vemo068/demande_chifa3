@@ -7,6 +7,7 @@ import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/pages/home_page.dart';
 import 'package:demande_chifa/pages/set_password_page.dart';
 import 'package:demande_chifa/style/colors.dart';
+import 'package:demande_chifa/style/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,7 +44,7 @@ class EnterPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     const Text(
-                      'Entrez votre Mot de pass',
+                      text_mot_de_pass_entre_password_page,
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class EnterPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10.0),
                     const Text(
-                      'Une application pour gérer votre CHIFA card virtuelle',
+                     text_gérer_chifa,
                       style: TextStyle(
                         fontSize: 16.0,
                         color: kTextColor2,
@@ -63,15 +64,15 @@ class EnterPasswordPage extends StatelessWidget {
                     TextField1(
                       textEditingController:
                           authController.password_login_controller,
-                      labelText: 'Mot de pass',
-                      hintText: 'Entrez votre Mot de pass',
+                      labelText: labelText_mot_de_pass,
+                      hintText: hintText_mot_de_pass_entre_password_page,
                     ),
                     const SizedBox(height: 40.0),
                     MyButton(
                       onTap: () async {
                         authController.login();
                       },
-                      text: "Continue",
+                      text: text_btn_continue,
                       color: kTextColor2,
                     ),
                   ],

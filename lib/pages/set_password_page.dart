@@ -6,6 +6,7 @@ import 'package:demande_chifa/controllers/demande_reno_controller.dart';
 import 'package:demande_chifa/pages/welcome_page.dart';
 import 'package:demande_chifa/style/buttons_style.dart';
 import 'package:demande_chifa/style/colors.dart';
+import 'package:demande_chifa/style/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class SetPasswordPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Set Password",
+          set_password_page_title,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -40,7 +41,7 @@ class SetPasswordPage extends StatelessWidget {
                     return Column(
                       children: [
                         const Text(
-                          'Une application pour gérer votre CHIFA card virtuelle',
+                          text_gérer_chifa,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: kTextColor2,
@@ -54,21 +55,21 @@ class SetPasswordPage extends StatelessWidget {
                         TextField1(
                           textEditingController:
                               authController.password_signup_controller,
-                          labelText: 'Mot de pass',
-                          hintText: 'Entrez un neuvoux mot de pass',
+                          labelText: labelText_mot_de_pass,
+                          hintText: hintText_neuvoux_mot_de_pass_set_password_page,
                         ),
 
                         const SizedBox(height: 10),
                         TextField1(
                           textEditingController:
                               authController.confirm_password_controller,
-                          labelText: 'Confirm Mot de pass',
-                          hintText: 'Confirmer votre Mot de pass',
+                          labelText: labelText_confirm_mot_de_pass_set_password_page,
+                          hintText: hintText_confirm_mot_de_pass_set_password_page,
                         ),
 
                         const SizedBox(height: 25),
                         MyButton(
-                          text: "Inscrire",
+                          text: text_btn_inscrire_set_password_page,
                           onTap: () {
                             authController.accountActivation();
                           },

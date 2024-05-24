@@ -2,6 +2,7 @@ import 'package:demande_chifa/components/button.dart';
 import 'package:demande_chifa/components/drawer.dart';
 import 'package:demande_chifa/controllers/auth_controller.dart';
 import 'package:demande_chifa/style/colors.dart';
+import 'package:demande_chifa/style/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: const Text(
-          'Profile',
+          profile_page_title,
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: kTextColor2,
@@ -32,7 +33,7 @@ class ProfilePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           authController.currenAssure!.image == null
-                              ? const Text("no image")
+                              ? const Text(no_image_message)
                               : CircleAvatar(
                                   radius: 50,
                                   backgroundImage: MemoryImage(
@@ -40,32 +41,32 @@ class ProfilePage extends StatelessWidget {
                                 ),
                           const SizedBox(height: 20),
                           Text(
-                            'Numéro d\'assurance: ${authController.currenAssure!.numAssure}',
+                            numéro_assurance_profile_page: ${authController.currenAssure!.numAssure},
                             style: const TextStyle(color: kTextColor2),
                           ),
                           Text(
-                            'Nom: ${authController.currenAssure!.nom}',
+                            nom_profile_page: ${authController.currenAssure!.nom},
                             style: const TextStyle(color: kTextColor2),
                           ),
                           Text(
-                            'Prénom: ${authController.currenAssure!.prenom}',
+                           prenom_profile_page: ${authController.currenAssure!.prenom},
                             style: const TextStyle(color: kTextColor2),
                           ),
                           Text(
-                            'Date de naissance: ${authController.currenAssure!.dateNaissance}',
+                            date_de_naissance_profile_page: ${authController.currenAssure!.dateNaissance},
                             style: const TextStyle(color: kTextColor2),
                           ),
                           Text(
-                            'Date fin droit: ${authController.currenAssure!.dateFinDroit}',
+                            date_fin_droit_profile_page: ${authController.currenAssure!.dateFinDroit},
                             style: const TextStyle(color: kTextColor2),
                           ),
                           Text(
-                            'Taux: ${authController.currenAssure!.taux} %',
+                            taux_profile_page: ${authController.currenAssure!.taux} %,
                             style: const TextStyle(color: kTextColor2),
                           ),
                         ],
                       )
-                    : const Text("data");
+                    : const Text(text_data_profile_page);
               }),
         ),
       ),
