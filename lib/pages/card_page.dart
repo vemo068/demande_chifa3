@@ -24,7 +24,7 @@ class CardPage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text(card_page_title),
+        title: const Text(ktext_card_page_title),
       ),
       body: GetBuilder(
           init: authController,
@@ -69,7 +69,7 @@ class CardPage extends StatelessWidget {
                                   //   "age": 15,
                                   // });
                                 },
-                                text: text_sharedata_card_page)
+                                text: ktext_sharedata_card_page)
                           ],
                         ),
                       );

@@ -17,7 +17,7 @@ class DemandeCartePage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text(demande_carte_page_text),
+        title: const Text(ktext_demande_carte_page),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -34,14 +34,15 @@ class DemandeCartePage extends StatelessWidget {
                           onTap: () {
                             demandeCarteController.pickIdImage();
                           },
-                          title: const Text(image_carte_didentité),
+                          title: const Text(ktext_image_carte_identite),
                           tileColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                           trailing: demandeCarteController.idImageBytes != null
-                              ? Image.memory(demandeCarteController.idImageBytes!)
-                              : const Text(no_image_message),
+                              ? Image.memory(
+                                  demandeCarteController.idImageBytes!)
+                              : const Text(ktext_no_image_message),
                         ),
                         const SizedBox(
                           height: 10,
@@ -50,16 +51,15 @@ class DemandeCartePage extends StatelessWidget {
                           onTap: () {
                             demandeCarteController.pickphoto();
                           },
-                          title: const Text(image_personnelle_demande_carte_page),
+                          title: const Text(
+                              ktext_image_personnelle_demande_carte_page),
                           tileColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          trailing:
-                              demandeCarteController.photoBytes != null
-                                  ? Image.memory(
-                                      demandeCarteController.photoBytes!)
-                                  : const Text(no_image_message),
+                          trailing: demandeCarteController.photoBytes != null
+                              ? Image.memory(demandeCarteController.photoBytes!)
+                              : const Text(ktext_no_image_message),
                         ),
                       ],
                     ),
@@ -69,7 +69,7 @@ class DemandeCartePage extends StatelessWidget {
                           onTap: () {
                             demandeCarteController.createDemande();
                           },
-                          text: text_btn_demande,
+                          text: ktext_btn_demande,
                           color: kTextColor2),
                     )
                   ],

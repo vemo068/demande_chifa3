@@ -1,10 +1,7 @@
 import 'package:demande_chifa/components/button.dart';
-import 'package:demande_chifa/components/text_field.dart';
 import 'package:demande_chifa/components/text_field1.dart';
 import 'package:demande_chifa/controllers/auth_controller.dart';
-import 'package:demande_chifa/controllers/demande_reno_controller.dart';
-import 'package:demande_chifa/pages/welcome_page.dart';
-import 'package:demande_chifa/style/buttons_style.dart';
+
 import 'package:demande_chifa/style/colors.dart';
 import 'package:demande_chifa/style/strings.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +38,7 @@ class SetPasswordPage extends StatelessWidget {
                     return Column(
                       children: [
                         const Text(
-                          text_gérer_chifa,
+                          ktext_introduction_echifa,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: kTextColor2,
@@ -55,16 +52,19 @@ class SetPasswordPage extends StatelessWidget {
                         TextField1(
                           textEditingController:
                               authController.password_signup_controller,
-                          labelText: labelText_mot_de_pass,
-                          hintText: hintText_neuvoux_mot_de_pass_set_password_page,
+                          labelText: ktext_labelText_mot_de_pass,
+                          hintText:
+                              hintText_neuvoux_mot_de_pass_set_password_page,
                         ),
 
                         const SizedBox(height: 10),
                         TextField1(
                           textEditingController:
                               authController.confirm_password_controller,
-                          labelText: labelText_confirm_mot_de_pass_set_password_page,
-                          hintText: hintText_confirm_mot_de_pass_set_password_page,
+                          labelText:
+                              labelText_confirm_mot_de_pass_set_password_page,
+                          hintText:
+                              hintText_confirm_mot_de_pass_set_password_page,
                         ),
 
                         const SizedBox(height: 25),

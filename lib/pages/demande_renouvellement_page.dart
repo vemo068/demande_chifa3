@@ -19,7 +19,7 @@ class DemandeRenouvellementPage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text(demande_renouvellement_page_title),
+        title: const Text(ktext_demande_renouvellement_page_title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -36,14 +36,14 @@ class DemandeRenouvellementPage extends StatelessWidget {
                           onTap: () {
                             demandeController.pickIdImage();
                           },
-                          title: const Text(image_carte_identité),
+                          title: const Text(ktext_image_carte_identite),
                           tileColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                           trailing: demandeController.idImageBytes != null
                               ? Image.memory(demandeController.idImageBytes!)
-                              : const Text(no_image_message),
+                              : const Text(ktext_no_image_message),
                         ),
                         const SizedBox(
                           height: 10,
@@ -52,7 +52,8 @@ class DemandeRenouvellementPage extends StatelessWidget {
                           onTap: () {
                             demandeController.pickAttestationImage();
                           },
-                          title: const Text(image_attestation_demande_renouvellement_page),
+                          title: const Text(
+                              ktext_image_attestation_demande_renouvellement_page),
                           tileColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -61,7 +62,7 @@ class DemandeRenouvellementPage extends StatelessWidget {
                               demandeController.attestationImageBytes != null
                                   ? Image.memory(
                                       demandeController.attestationImageBytes!)
-                                  : const Text(no_image_message),
+                                  : const Text(ktext_no_image_message),
                         ),
                       ],
                     ),
@@ -71,7 +72,7 @@ class DemandeRenouvellementPage extends StatelessWidget {
                           onTap: () {
                             demandeController.createDemande();
                           },
-                          text: text_btn_demande,
+                          text: ktext_btn_demande,
                           color: kTextColor2),
                     )
                   ],

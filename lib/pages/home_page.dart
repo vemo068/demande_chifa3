@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                                     height: 10,
                                   ),
                                   const Text(
-                                    home_page_text,
+                                    ktext_welcome,
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   Text(

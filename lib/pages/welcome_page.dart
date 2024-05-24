@@ -59,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10.0),
                     const Text(
-                      text_gérer_chifa,
+                      ktext_introduction_echifa,
                       style: TextStyle(
                         fontSize: 16.0,
                         color: kTextColor2,
@@ -69,15 +69,17 @@ class WelcomePage extends StatelessWidget {
                     const SizedBox(height: 40.0),
                     TextField1(
                       textEditingController: authController.n_Assure_controller,
-                      labelText: labelText_Numéro_de_sécurité_sociale_welcome_page,
-                      hintText: hintText_votre_numéro_de_sécurité_sociale_welcome_page,
+                      labelText:
+                          labelText_Numero_de_securite_sociale_welcome_page,
+                      hintText:
+                          hintText_votre_numero_de_securite_sociale_welcome_page,
                     ),
                     const SizedBox(height: 40.0),
                     MyButton(
                       onTap: () {
                         authController.checkAccountIsActivated();
                       },
-                      text: text_btn_continue,
+                      text: ktext_btn_continue,
                       color: kTextColor2,
                     ),
                   ],

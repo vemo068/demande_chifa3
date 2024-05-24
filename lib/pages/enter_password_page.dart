@@ -44,7 +44,7 @@ class EnterPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     const Text(
-                      text_mot_de_pass_entre_password_page,
+                      ktext_mot_de_pass_entre_password_page,
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class EnterPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10.0),
                     const Text(
-                     text_gérer_chifa,
+                      ktext_introduction_echifa,
                       style: TextStyle(
                         fontSize: 16.0,
                         color: kTextColor2,
@@ -64,15 +64,15 @@ class EnterPasswordPage extends StatelessWidget {
                     TextField1(
                       textEditingController:
                           authController.password_login_controller,
-                      labelText: labelText_mot_de_pass,
-                      hintText: hintText_mot_de_pass_entre_password_page,
+                      labelText: ktext_labelText_mot_de_pass,
+                      hintText: ktext_hintText_mot_de_pass_entre_password_page,
                     ),
                     const SizedBox(height: 40.0),
                     MyButton(
                       onTap: () async {
                         authController.login();
                       },
-                      text: text_btn_continue,
+                      text: ktext_btn_continue,
                       color: kTextColor2,
                     ),
                   ],
