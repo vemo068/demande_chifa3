@@ -24,7 +24,7 @@ class CardPage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text('Credit Card'),
+        title: const Text('E-CHIFA'),
       ),
       body: GetBuilder(
           init: authController,
@@ -48,7 +48,7 @@ class CardPage extends StatelessWidget {
                                     .toJsonWithoutImage()),
                                 decoration: const PrettyQrDecoration(
                                   image: PrettyQrDecorationImage(
-                                    image: AssetImage('images/flutter.png'),
+                                    image: AssetImage('assets/cnas_logo.png'),
                                   ),
                                 ),
                               ),
@@ -69,7 +69,7 @@ class CardPage extends StatelessWidget {
                                   //   "age": 15,
                                   // });
                                 },
-                                text: "Share Data")
+                                text: "Partage")
                           ],
                         ),
                       );
