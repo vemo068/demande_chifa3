@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
-
+import 'package:demande_chifa/style/strings.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
 class CardPage extends StatelessWidget {
@@ -24,7 +24,7 @@ class CardPage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text('E-CHIFA'),
+        title: const Text(card_page_title),
       ),
       body: GetBuilder(
           init: authController,
@@ -69,7 +69,7 @@ class CardPage extends StatelessWidget {
                                   //   "age": 15,
                                   // });
                                 },
-                                text: "Partage")
+                                text: text_sharedata_card_page)
                           ],
                         ),
                       );

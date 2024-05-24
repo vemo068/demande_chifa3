@@ -3,6 +3,7 @@ import 'package:demande_chifa/components/drawer.dart';
 import 'package:demande_chifa/controllers/demande_carte_controller.dart';
 import 'package:demande_chifa/controllers/demande_reno_controller.dart';
 import 'package:demande_chifa/style/colors.dart';
+import 'package:demande_chifa/style/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class DemandeCartePage extends StatelessWidget {
     return Scaffold(
       drawer: TheDrawer(),
       appBar: AppBar(
-        title: const Text('Demande Carte'),
+        title: const Text(demande_carte_page_text),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -33,14 +34,14 @@ class DemandeCartePage extends StatelessWidget {
                           onTap: () {
                             demandeCarteController.pickIdImage();
                           },
-                          title: const Text("Image de carte d'identité"),
+                          title: const Text(image_carte_didentité),
                           tileColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                           trailing: demandeCarteController.idImageBytes != null
                               ? Image.memory(demandeCarteController.idImageBytes!)
-                              : const Text("no image choosed"),
+                              : const Text(no_image_message),
                         ),
                         const SizedBox(
                           height: 10,
@@ -49,7 +50,7 @@ class DemandeCartePage extends StatelessWidget {
                           onTap: () {
                             demandeCarteController.pickphoto();
                           },
-                          title: const Text("Image personnelle"),
+                          title: const Text(image_personnelle_demande_carte_page),
                           tileColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -58,7 +59,7 @@ class DemandeCartePage extends StatelessWidget {
                               demandeCarteController.photoBytes != null
                                   ? Image.memory(
                                       demandeCarteController.photoBytes!)
-                                  : const Text("no image choosed"),
+                                  : const Text(no_image_message),
                         ),
                       ],
                     ),
@@ -68,7 +69,7 @@ class DemandeCartePage extends StatelessWidget {
                           onTap: () {
                             demandeCarteController.createDemande();
                           },
-                          text: "Demande",
+                          text: text_btn_demande,
                           color: kTextColor2),
                     )
                   ],
