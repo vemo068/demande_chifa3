@@ -50,7 +50,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     const Text(
-                      text_bienvenue_welcome_page,
+                      ktext_bienvenue_welcome_page,
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -70,9 +70,9 @@ class WelcomePage extends StatelessWidget {
                     TextField1(
                       textEditingController: authController.n_Assure_controller,
                       labelText:
-                          labelText_Numero_de_securite_sociale_welcome_page,
+                          ktext_labelText_Numero_de_securite_sociale_welcome_page,
                       hintText:
-                          hintText_votre_numero_de_securite_sociale_welcome_page,
+                          ktext_hintText_votre_numero_de_securite_sociale_welcome_page,
                     ),
                     const SizedBox(height: 40.0),
                     MyButton(

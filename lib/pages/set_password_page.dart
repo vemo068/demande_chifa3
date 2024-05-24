@@ -17,7 +17,7 @@ class SetPasswordPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          set_password_page_title,
+          ktext_set_password_page_title,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class SetPasswordPage extends StatelessWidget {
                               authController.password_signup_controller,
                           labelText: ktext_labelText_mot_de_pass,
                           hintText:
-                              hintText_neuvoux_mot_de_pass_set_password_page,
+                              ktext_hintText_neuvoux_mot_de_pass_set_password_page,
                         ),
 
                         const SizedBox(height: 10),
@@ -62,14 +62,14 @@ class SetPasswordPage extends StatelessWidget {
                           textEditingController:
                               authController.confirm_password_controller,
                           labelText:
-                              labelText_confirm_mot_de_pass_set_password_page,
+                              ktext_labelText_confirm_mot_de_pass_set_password_page,
                           hintText:
-                              hintText_confirm_mot_de_pass_set_password_page,
+                              ktext_hintText_confirm_mot_de_pass_set_password_page,
                         ),
 
                         const SizedBox(height: 25),
                         MyButton(
-                          text: text_btn_inscrire_set_password_page,
+                          text: ktext_btn_inscrire_set_password_page,
                           onTap: () {
                             authController.accountActivation();
                           },
