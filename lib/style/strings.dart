@@ -1,0 +1,1 @@
+const String card_page_title="CHIFA Card";
