@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:demande_chifa/models/demande_renouvle.dart';
 
 class HttpDemandeService {
-  Future<List<DemandeDeRenouvellement>> getAllDemandesDeRenouvellement() async {
+  static Future<List<DemandeDeRenouvellement>> getAllDemandesDeRenouvellement() async {
     final response = await http.get(Uri.parse(getRenoDemandesUrl));
 
     if (response.statusCode == 200) {
@@ -43,6 +43,39 @@ class HttpDemandeService {
       return DemandeDeRenouvellement.fromJson(bdy);
     } else {
       throw Exception('Failed to create demande de renouvellement');
+    }
+  }
+
+  static Future<List<DemandeDeRenouvellement>> fetchRenoDemandsByAssureId(
+      int assureId) async {
+    final response =
+        await http.get(Uri.parse('$getAllRenoDemandsByAssureId$assureId'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> body = json.decode(response.body);
+      List<DemandeDeRenouvellement> demandes = body
+          .map((dynamic item) => DemandeDeRenouvellement.fromJson(item))
+          .toList();
+      return demandes;
+    } else {
+      throw Exception('Failed to load reno demands');
+    }
+  }
+
+
+  static Future<List<DemandeDeRenouvellement>> fetchNotDoneRenoDemandsByAssureId(
+      int assureId) async {
+    final response =
+        await http.get(Uri.parse('$getNotDoneRenoDemandsByAssureId$assureId'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> body = json.decode(response.body);
+      List<DemandeDeRenouvellement> demandes = body
+          .map((dynamic item) => DemandeDeRenouvellement.fromJson(item))
+          .toList();
+      return demandes;
+    } else {
+      throw Exception('Failed to load not done reno demands');
     }
   }
 }

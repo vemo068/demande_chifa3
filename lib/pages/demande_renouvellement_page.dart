@@ -27,7 +27,20 @@ class DemandeRenouvellementPage extends StatelessWidget {
           child: GetBuilder(
               init: demandeController,
               builder: (_) {
-                return Column(
+                return demandeController.checkDateFinDroit()?const Text(
+                       ktext_have_right_message,
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 18,
+                        ),
+                      ) :demandeController.checkIfHasNotDoneDemandes()
+                        ? const Text(
+                            ktext_demand_in_progress,
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 18,
+                            ),
+                          ): Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(

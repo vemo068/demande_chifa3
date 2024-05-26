@@ -25,55 +25,78 @@ class DemandeCartePage extends StatelessWidget {
           child: GetBuilder(
               init: demandeCarteController,
               builder: (_) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        ListTile(
-                          onTap: () {
-                            demandeCarteController.pickIdImage();
-                          },
-                          title: const Text(ktext_image_carte_identite),
-                          tileColor: Colors.grey[200],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          trailing: demandeCarteController.idImageBytes != null
-                              ? Image.memory(
-                                  demandeCarteController.idImageBytes!)
-                              : const Text(ktext_no_image_message),
+                return demandeCarteController.checkIfCardIsActivated()
+                    ? const Text(
+                        ktext_have_card_message,
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 18,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ListTile(
-                          onTap: () {
-                            demandeCarteController.pickphoto();
-                          },
-                          title: const Text(
-                              ktext_image_personnelle_demande_carte_page),
-                          tileColor: Colors.grey[200],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          trailing: demandeCarteController.photoBytes != null
-                              ? Image.memory(demandeCarteController.photoBytes!)
-                              : const Text(ktext_no_image_message),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: MyButton(
-                          onTap: () {
-                            demandeCarteController.createDemande();
-                          },
-                          text: ktext_btn_demande,
-                          color: kTextColor2),
-                    )
-                  ],
-                );
+                      )
+                    : demandeCarteController.checkIfHasNotDoneDemandes()
+                        ? const Text(
+                            ktext_demand_in_progress,
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 18,
+                            ),
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  ListTile(
+                                    onTap: () {
+                                      demandeCarteController.pickIdImage();
+                                    },
+                                    title:
+                                        const Text(ktext_image_carte_identite),
+                                    tileColor: Colors.grey[200],
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    trailing: demandeCarteController
+                                                .idImageBytes !=
+                                            null
+                                        ? Image.memory(demandeCarteController
+                                            .idImageBytes!)
+                                        : const Text(ktext_no_image_message),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  ListTile(
+                                    onTap: () {
+                                      demandeCarteController.pickphoto();
+                                    },
+                                    title: const Text(
+                                        ktext_image_personnelle_demande_carte_page),
+                                    tileColor: Colors.grey[200],
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    trailing: demandeCarteController
+                                                .photoBytes !=
+                                            null
+                                        ? Image.memory(
+                                            demandeCarteController.photoBytes!)
+                                        : const Text(ktext_no_image_message),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                child: MyButton(
+                                    onTap: () {
+                                      demandeCarteController.createDemande();
+                                    },
+                                    text: ktext_btn_demande,
+                                    color: kTextColor2),
+                              )
+                            ],
+                          );
               }),
         ),
       ),

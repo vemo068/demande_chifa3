@@ -2,8 +2,10 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:demande_chifa/api/http_assure_service.dart';
+import 'package:demande_chifa/api/http_demande_carte_service.dart';
 import 'package:demande_chifa/controllers/home_controller.dart';
 import 'package:demande_chifa/models/assure.dart';
+import 'package:demande_chifa/models/demande_card.dart';
 import 'package:demande_chifa/pages/enter_password_page.dart';
 import 'package:demande_chifa/pages/home_page.dart';
 import 'package:demande_chifa/pages/set_password_page.dart';
@@ -22,8 +24,25 @@ class AuthController extends GetxController {
 
   Uint8List? profileImageBytes;
 
-  void signUp() {
+  List<DemandeCard> notDoneRenoDemandsList = [];
+  List<DemandeCard> notDoneCardDemandsList = [];
+
+  Future<void> getNotDoneRenoDemands() async {
+    notDoneRenoDemandsList =
+        await HttpDemandeCarteService.fetchCardDemandsByAssureId(
+            currenAssure!.idUser!);
+  }
+
+  Future<void> getNotDoneCardDemands() async {
+    notDoneCardDemandsList =
+        await HttpDemandeCarteService.fetchCardDemandsByAssureId(
+            currenAssure!.idUser!);
+  }
+
+  void signUp() async {
     Get.to(HomePage());
+    await getNotDoneCardDemands();
+    await getNotDoneRenoDemands();
   }
 
   // login
@@ -80,7 +99,10 @@ class AuthController extends GetxController {
     currenAssure = await HttpAssureService.login(
         n_Assure_controller.text, password_login_controller.text);
     if (currenAssure != null) {
+      await getNotDoneCardDemands();
+    await getNotDoneRenoDemands();
       Get.offAll(() => HomePage());
+
     } else {
       Get.snackbar(
         "Login Faild",
@@ -122,9 +144,5 @@ class AuthController extends GetxController {
     }
   }
 
-
-
-  void generateQR(){
-    
-  }
+  void generateQR() {}
 }

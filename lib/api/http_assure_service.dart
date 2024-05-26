@@ -12,7 +12,6 @@ class HttpAssureService {
       body: {
         'numAssure': numAssure,
         'password': password,
-        
       },
     );
     if (response.statusCode == 200) {
@@ -36,7 +35,7 @@ class HttpAssureService {
       if (body == "") {
         return null;
       } else {
-        var bdy = await json.decode(response.body);
+        var bdy = await json.decode(utf8.decode(response.bodyBytes));
         return Assure.fromJson(bdy);
       }
     }

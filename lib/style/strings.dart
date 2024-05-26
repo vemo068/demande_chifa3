@@ -37,3 +37,6 @@ const String ktext_labelText_Numero_de_securite_sociale_welcome_page =
     'Numéro de sécurité sociale';
 const String ktext_hintText_votre_numero_de_securite_sociale_welcome_page =
     'Entrez votre numéro de sécurité sociale';
+const String ktext_have_card_message = "You Have A card";
+const String ktext_have_right_message = "You Have the Right";
+const String ktext_demand_in_progress = "Your demande is progress...";

@@ -16,6 +16,21 @@ class DemandeCarteController extends GetxController {
   Uint8List? idImageBytes;
   Uint8List? photoBytes;
 
+  List<DemandeCard> cardDemandsList = [];
+
+  Future<void> getAllDemands() async {
+    cardDemandsList = await HttpDemandeCarteService.fetchCardDemandsByAssureId(
+        _authController.currenAssure!.idUser!);
+  }
+
+  bool checkIfCardIsActivated() {
+    return _authController.currenAssure!.cardActivated;
+  }
+
+  bool checkIfHasNotDoneDemandes() {
+    return _authController.notDoneCardDemandsList.isEmpty;
+  }
+
   Future<void> pickIdImage() async {
     try {
       // Pick a single file
@@ -88,6 +103,8 @@ class DemandeCarteController extends GetxController {
       colorText: kTextColor2,
       backgroundColor: kBackgroundColor,
     );
+    await _authController.getNotDoneCardDemands();
+    await _authController.getNotDoneRenoDemands();
     Get.offAll(
       () => HomePage(),
     );

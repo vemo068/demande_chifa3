@@ -34,7 +34,7 @@ class Assure {
       isActivated: json['activated'] ?? false,
       cardActivated: json['cardActivated'],
       numAssure: json['numAssure'] ?? '',
-      nom: json['nom'] ?? '',
+      nom: json['nom'],
       prenom: json['prenom'] ?? '',
       dateNaissance: DateTime.parse(json['dateNaissance']),
       password: json['password'] ?? '',

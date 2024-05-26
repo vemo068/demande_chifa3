@@ -16,6 +16,21 @@ class DemandeRenoController extends GetxController {
   Uint8List? idImageBytes;
   Uint8List? attestationImageBytes;
 
+  List<DemandeDeRenouvellement> renoDemandsList = [];
+
+  Future<void> getAllDemands() async {
+    renoDemandsList = await HttpDemandeService.fetchRenoDemandsByAssureId(
+        _authController.currenAssure!.idUser!);
+  }
+
+  bool checkDateFinDroit() {
+    return _authController.currenAssure!.dateFinDroit.isAfter(DateTime.now());
+  }
+
+  bool checkIfHasNotDoneDemandes() {
+    return _authController.notDoneRenoDemandsList.isEmpty;
+  }
+
   Future<void> pickIdImage() async {
     try {
       // Pick a single file
@@ -90,6 +105,8 @@ class DemandeRenoController extends GetxController {
         colorText: kTextColor2,
         backgroundColor: kBackgroundColor,
       );
+      await _authController.getNotDoneCardDemands();
+      await _authController.getNotDoneRenoDemands();
       Get.offAll(
         () => HomePage(),
       );

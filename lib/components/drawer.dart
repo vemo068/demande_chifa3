@@ -3,7 +3,6 @@ import 'package:demande_chifa/pages/card_page.dart';
 import 'package:demande_chifa/pages/demande_carte_page.dart';
 import 'package:demande_chifa/pages/demande_renouvellement_page.dart';
 import 'package:demande_chifa/pages/home_page.dart';
-import 'package:demande_chifa/pages/profile_page.dart';
 import 'package:demande_chifa/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,15 +46,15 @@ class TheDrawer extends StatelessWidget {
               },
             ),
           ),
-          DropdownMenuItem(
-            child: ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text("Profile"),
-              onTap: () {
-                Get.offAll(() => ProfilePage());
-              },
-            ),
-          ),
+          // DropdownMenuItem(
+          //   child: ListTile(
+          //     leading: const Icon(Icons.person),
+          //     title: const Text("Profile"),
+          //     onTap: () {
+          //       Get.offAll(() => ProfilePage());
+          //     },
+          //   ),
+          // ),
           DropdownMenuItem(
             child: ListTile(
               leading: const Icon(Icons.credit_card),
